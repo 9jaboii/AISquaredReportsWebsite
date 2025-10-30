@@ -91,7 +91,6 @@
 
 
 
-
     </ul>
   </div>
 
@@ -113,9 +112,19 @@
 
       // Minimal config; extend as needed (region, Cognito, identity pool, etc.)
       var chatbotUiConfig = {
-        // Example: set initial session attributes if desired
-        // lex: { sessionAttributes: { userAgent: navigator.userAgent } },
-        // ui: { parentOrigin: window.location.origin } // optional hardening
+        lex: {
+          region: 'us-east-1',        // your Lex bot region
+          botName: 'AISquaredDemo2',       // your Lex bot name
+          botAlias: 'TSTALIASID'         // or your alias
+        },
+        cognito: {
+          // Provide your Cognito Identity Pool ID for unauthenticated auth (recommended)
+          poolId: 'us-east-1_KBUUGhGvG',
+          region: 'us-east-1'
+        },
+        ui: {
+          parentOrigin: window.location.origin   // optional hardening
+        }
       };
 
       loader.load(chatbotUiConfig).catch(function (error) {
